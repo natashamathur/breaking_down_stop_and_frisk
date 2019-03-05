@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Breaking Down Stop-and-Frisk</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<h1 style="font-family:Courier New;">Breaking Down Stop-and-Frisk</h1>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+<body>
+  <h3 style="font-family:Courier New;">Number of Stops over the Years</h3>
+
+  <div class="by_year">
+  <script src="by_year.js"></script>
+  </div>
+
+  <h1 style="font-family:Courier New;">Let's Look at 2013! </h1>
+  <h2 style="font-family:Courier New;">Breakdown by Race </h2>
+
+  <h3 style="font-family:Courier New;">Percentage of Total Population</h3>
+
+  <div class="race_breakdowns">
+  <script src="race_breakdowns.js"></script>
+  <div id="option">
+      <input name="updateButton"
+             type="button"
+             value="See Percentage of Stops"
+             onclick="updateRace()" />
+  </div>
+  </div>
+
+  <h2 style="font-family:Courier New;">Breakdown By Gender</h2>
+
+  <h3 style="font-family:Courier New;">Percentage of Total Population</h3>
+
+  <div class="gender_breakdowns">
+  <script src="gender_breakdowns.js"></script>
+  <div id="option">
+      <input name="updateButton"
+             type="button"
+             value="See Percentage of Stops"
+             onclick="updateGender()" />
+  </div>
+  </div>
+
+
+  <h2 style="font-family:Courier New;">What was the outcome?</h2>
+
+  <h3 style="font-family:Courier New;">Percentage of Total Stops</h3>
+
+  <div class="outcomes">
+  <script src="outcomes.js"></script>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
