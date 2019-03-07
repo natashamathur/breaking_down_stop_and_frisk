@@ -1,0 +1,17 @@
+.topButton {
+  background-color: #F4F4F4; /* Green */
+  border: none;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-family: Courier;
+  font-color: black;
+}
+
+.generalButton {
+  background-color: #F4F4F4;
+  border-color: black;
+  border-weight: 5px;
+  padding: 5px 5px;
+  font-size: 12px;
+  font-family: Tahoma;
+}

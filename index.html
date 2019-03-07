@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<body bgcolor="#F4F4F4">
+<head>
+  <meta charset="utf-8">
+  <title align='center'>Breaking Down Stop-and-Frisk</title>
+  <link rel="stylesheet" type="text/css" href="overall_main.css">
+
+</head>
+
+<h1 style="font-family:Tahoma;" align='center'>Breaking Down Stop-and-Frisk
+</h1>
+<p align='center' style="font-family: Courier">More information and
+    visualizations on this topic can be found
+    <a href="https://natashamathur.github.io/nypd_activity_visualized/">here</a>.
+</p>
+<br></br>
+<div id = "buttons" align='center'>
+  <button class="topButton"><a href="#by_year">By Year</a></button>
+  <button class="topButton"><a href="#by_race">By Race</a></button>
+  <button class="topButton"><a href="#by_gender">By Gender</a></button>
+  <button class="topButton"><a href="#by_borough">By Borough</a></button>
+  <button class="topButton"><a href="#by_outcome">By Outcome</a></button>
+</div>
+<br></br>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<body>
+
+  <div> </div>
+  <h3 id="by_year" style="font-family:Tahoma;">Number of Stops over the Years</h3>
+  <p style="font-family: Courier">Stop and Frisk peaked in 2011</p>
+
+  <div id = "buttons">
+    <button class="generalButton" id="all_years">2009 - 2016</button>
+    <button class="generalButton" id="beginning">Rise</button>
+    <button class="generalButton" id="middle">Peak</button>
+    <button class="generalButton" id="end">Decline</button>
+  </div>
+  <div class="by_year">
+    <script src="by_year.js"></script>
+  </div>
+
+  <h1 style="font-family:Tahoma;">Focusing on 2011: </h1>
+
+  <h2 id="by_race" style="font-family:Tahoma;">Breakdown by Race </h2>
+    <p style="font-family:Courier;"> New York City has a particularly diverse
+                                    population.
+    </p>
+
+  <div id = "buttons">
+    <button class="generalButton" id="raceByPopulation">by Population</button>
+    <button class="generalButton" id="raceByStops">by Stops</button>
+  </div>
+  <div class="race_breakdowns">
+    <script src="race_breakdowns.js"></script>
+  </div>
+
+  <div class="mosaic">
+    <h2 style="font-family:Tahoma;"> Mosaic </h2>
+    <script src="mosaic.js"></script>
+  </div>
+
+  <h2 id="by_gender" style="font-family:Tahoma;">Breakdown By Gender</h2>
+    <p style="font-family:Courier;"> The majority of people stopped were male. </p>
+  <div id = "buttons">
+    <button class="generalButton" id="genderByPopulation">by Population</button>
+    <button class="generalButton" id="genderByStops">by Stops</button>
+  </div>
+  <div class="gender_breakdowns">
+    <script src="gender_breakdowns.js"></script>
+  </div>
+
+  <h2 id="by_borough" style="font-family:Tahoma;">Breakdown By Borough</h2>
+    <p style="font-family:Courier;"> Conversely, the number of stops in each borough
+     (Brooklyn,Queens, Manhattan, Bronx, and Staten Island) is actually
+     appropximately <br>proportional
+  to the population of each borough.</p>
+  <div id = "buttons">
+    <button class="generalButton" id="boroughByPopulation">by Population</button>
+    <button class="generalButton" id="boroughByStops">by Stops</button>
+  </div>
+  <div class="borough_breakdowns">
+    <script src="borough_breakdowns.js"></script>
+  </div>
+
+  <h2 id="by_outcome" style="font-family:Tahoma">What was the outcome?</h2>
+  <div id = "buttons">
+    <button class="generalButton" id="Outcomes">Next!</button>
+  </div>
+  <div class="outcomes">
+    <script src="outcomes.js"></script>
+  </div>
+
+</body>
+</html>
