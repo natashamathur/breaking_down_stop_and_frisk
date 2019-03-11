@@ -1,0 +1,27 @@
+.topButton {
+  background-color: #F4F4F4; /* Green */
+  border: none;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-family: Courier;
+  font-color: black;
+}
+
+.generalButton {
+  background-color: #F4F4F4;
+  border-color: black;
+  border-weight: 5px;
+  padding: 5px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
+.signature {
+  font-family: Courier;
+  font-size: 14px;
+  border-color: none;
+  background-color: #D3D3DE;
+  border-color: #F4F4F4;
+
+}
