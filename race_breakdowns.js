@@ -17,7 +17,7 @@ const race_stops_pop= [
       {'race':'Hispanic','val': '0.33',  'tt': 33,
         'offset': '0.52','label': 0.65},
       {'race': 'Other (incl. White)', 'val': '0.09', 'tt': 9,
-         'offset':'0.85','label': 0.855},
+         'offset':'0.85','label': 0.86},
       {'race': "",'val': '0.04','tt': 4,
         'offset':'0.93','label': 0.94},
       {'race': "",'val': '0.03', 'tt': 3,

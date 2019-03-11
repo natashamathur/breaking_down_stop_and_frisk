@@ -23,24 +23,6 @@ const data_outcomes= [
     }
   ]
 
-  const data_event= [
-
-      {
-        'race': 'Summons',
-        'val': '0.0588',
-        'tt': '6',
-        'offset': 0,
-        'label': 0
-      },
-      {
-        'race':'Arrests',
-        'val': '0.059959',
-        'tt': '6',
-        'offset': '0.0588',
-        'label': 0.062
-      }
-    ]
-
     const svg_outcomes = d3.select(".outcomes").append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -94,20 +76,21 @@ var join_labels = svg_outcomes.selectAll("text")
    .attr("fill", "white");
 
    // Prep the tooltip bits, initial display is hidden
-var tooltip = svg_outcomes.append("g")
-.attr("class", "tooltip")
-.style("display", "none")
+    var tooltip = svg_outcomes.append("g")
+    .attr("class", "tooltip")
+    .style("display", "none")
 
-tooltip.append("text")
-  .attr("dy", label_y)
+    tooltip.append("text")
+      .attr("dy", label_y)
 
 }
 
   d3.select("#OutcomeMover")
   .on("click", function(d,i) {
     outBreakout(data_outcomes)
+
     d3.select("#outCaption")
-      .text("In most cases no actions were taken to follow up on the stop and/or frisk.")
+      .text("In most cases no actions were taken to follow up on the stop and/or frisk.").transition().duration(1000)
 
   });
 

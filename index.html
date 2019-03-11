@@ -16,6 +16,7 @@
 </p>
 <br></br>
 <div id = "buttons" align='center'>
+  <button class="topButton" onClick="window.location.reload()">Refresh</button>
   <button class="topButton"><a href="#by_year">By Year</a></button>
   <button class="topButton"><a href="#by_race">By Race</a></button>
   <button class="topButton"><a href="#by_gender">By Gender</a></button>
@@ -32,7 +33,7 @@
   <p style="font-family:Courier;" id="yearCaption"> The number of stops increased steadily in the late 2000s </p>
 
   <div id = "buttons">
-    <button class="generalButton" id="all_years"> Rise </button>
+    <button class="secondButton" id="all_years"> Rise </button>
   </div>
   <div class="by_year">
     <script src="by_year.js"></script>
@@ -47,12 +48,16 @@
 
   <div id = "buttons">
     <button class="generalButton" id="raceByPopulation">by Population</button>
-    <button class="generalButton" id="raceByStops">by Stops</button>
+    <button class="secondButton" id="raceByStops">by Stops</button>
   </div>
   <div class="race_breakdowns">
     <script src="race_breakdowns.js"></script>
   </div>
 
+  <h2 style="font-family:Tahoma;"> Mosaic </h2>
+  <div class="mosaic_by_frisk">
+    <script src="mosaic.js"></script>
+  </div>
 
 
 
@@ -63,7 +68,7 @@
 
   <div id = "buttons">
     <button class="generalButton" id="genderByPopulation">by Population</button>
-    <button class="generalButton" id="genderByStops">by Stops</button>
+    <button class="secondButton" id="genderByStops">by Stops</button>
   </div>
   <div class="gender_breakdowns">
     <script src="gender_breakdowns.js"></script>
@@ -75,7 +80,7 @@
 
   <div id = "buttons">
     <button class="generalButton" id="boroughByPopulation">by Population</button>
-    <button class="generalButton" id="boroughByStops">by Stops</button>
+    <button class="secondButton" id="boroughByStops">by Stops</button>
   </div>
   <div class="borough_breakdowns">
     <script src="borough_breakdowns.js"></script>
@@ -86,12 +91,13 @@
   <p id=outCaption style="font-family:Courier;"> Only 12% of stops actually resulted in further
   action. </p>
   <div id = "buttons">
-    <button class="generalButton" id="OutcomeMover">Next: </button>
+    <button class="secondButton" id="OutcomeMover">Next: </button>
   </div>
 
   <div class="outcomes">
     <script src="outcomes.js"></script>
   </div>
+
   <br></br>
   <br></br>
 

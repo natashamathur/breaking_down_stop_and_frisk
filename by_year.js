@@ -29,7 +29,7 @@ const year_data = [
   ]
 
     const margin = {top: 20, right: 20, bottom: 30, left: 40}
-    const width = 1320
+    const width = screen.width*.975;
     const height = 200
     const label_y = 100
 
@@ -77,7 +77,7 @@ function yearBreakout (data) {
      var yPosition = d3.mouse(this)[1]-60;
      tooltip_yr.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_yr.select("text").text(d.tt + "%")
-     tooltip_yr.attr("fill", "white")
+     tooltip_yr.attr("fill", "black")
      tooltip_yr.attr("font-family", "Courier")
      tooltip_yr.attr("font-size", "18px");
       });
@@ -131,6 +131,7 @@ function yearBreakout (data) {
                         greeting = "Decline";
                       }
                     return greeting})
+              .attr("background-color", "red")
         end = 6
         caption = "third"
 

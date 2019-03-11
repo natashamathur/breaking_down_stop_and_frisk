@@ -17,6 +17,17 @@
   font-family: Tahoma;
 }
 
+.secondButton {
+  background-color: #7A1706;
+  border-color: black;
+  border-weight: 5px;
+  padding: 5px 5px;
+  color: #D3D3DE;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
 .signature {
   font-family: Courier;
   font-size: 14px;
