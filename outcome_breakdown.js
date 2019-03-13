@@ -1,6 +1,3 @@
-console.log("in funciton")
-
-
 const data_outcomes= [
 
     {
@@ -44,7 +41,7 @@ const data_outcomes= [
       }
     ]
 
-    const svg_outcomes = d3.select(".outcomes").append("svg")
+    const svg_outcomes = d3.select(".outcomesB").append("svg")
       .attr("width", width)
       .attr("height", height)
 
@@ -61,40 +58,46 @@ function outBreakout(data) {
 
        join.enter()
        .append("rect")
+       .attr("width", 0)
        .attr("class","outBlocks")
        .merge(join)
        .attr("fill", function(d) { return z(d.val); })
-       .attr("width", d => x(Number(d.val)))
+       // .attr("width", d => x(Number(d.val)))
        .attr("height", height)
        .attr("y",y)
        .attr('x', d => x(Number(d.offset)))
        .on("mouseover", function() { tooltip.style("display", null); })
    .on("mouseout", function() { tooltip.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-5;
+     var xPosition = d3.mouse(this)[0]-10;
      var yPosition = d3.mouse(this)[1]-60;
      tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip.select("text").text(d.tt + "%")
      tooltip.attr("fill", "white")
      tooltip.attr("font-family", "Courier")
-     tooltip.attr("font-size", "18px");
-      });
+     tooltip.attr("font-size", "14px");
+      })
+      .transition()
+      .duration(1000).delay(300)
+      .attr("width", d => x(Number(d.val)))
+      ;
 
-var join_labels = svg_outcomes.selectAll("text")
+var join_labels = svg_outcomes.selectAll("outTexts")
    .data(data);
 
    join_labels.enter()
    .append("text")
    .attr("class","outTexts")
-   .merge(join_labels)
    .text(function(d) {
       return d.race;
    })
-   .attr('x', d => x(Number(d.label)))
    .attr("y", label_y)
    .attr("font-family", "Courier")
-   .attr("font-size", "16px")
-   .attr("fill", "white");
+   .attr("font-size", "14px")
+   .attr("fill", "white")
+   .transition().duration(0).delay(1000)
+   .attr('x', d => x(Number(d.label)))
+;
 
    // Prep the tooltip bits, initial display is hidden
 var tooltip = svg_outcomes.append("g")
@@ -111,6 +114,8 @@ tooltip.append("text")
     outBreakout(data_outcomes)
     d3.select("#outCaption")
       .text("In most cases no actions were taken to follow up on the stop and/or frisk.")
+      d3.select("#OutcomeMover")
+        .attr("class", "disabledButton")
 
   });
 

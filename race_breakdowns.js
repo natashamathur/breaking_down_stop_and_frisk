@@ -24,8 +24,18 @@ const race_stops_pop= [
         'offset':'0.97',  'label': 0.}
     ]
 
+var population_race = `New York City is one of the most diverse cities in the
+                      world New York City is one of the most diverse cities in
+                      the world New York City is one of the most diverse cities in the
+                      world New York City is one of the most diverse cities in the
+                      world`;
+
+var stops_race = `Yet most of the people stopped were Black Yet most of the people stopped were Black.`;
 
 function raceBreakout(data) {
+
+  d3.select("#raceCaption").text(d=>population_race);
+
 
   var z = d3.scaleOrdinal()
     .range(["#C732D5", "#8AC437", "#F65D3A","#4369EB", "#32D59B"]);
@@ -55,13 +65,13 @@ function raceBreakout(data) {
        .on("mouseover", function() { tooltip_race.style("display", null); })
    .on("mouseout", function() { tooltip_race.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-5;
+     var xPosition = d3.mouse(this)[0]-10;
      var yPosition = d3.mouse(this)[1]-60;
      tooltip_race.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_race.select("text").text(d.tt + "%")
      tooltip_race.attr("fill", "white")
      tooltip_race.attr("font-family", "Courier")
-     tooltip_race.attr("font-size", "18px");
+     tooltip_race.attr("font-size", "14px");
       })
     .exit().transition()
      ;
@@ -79,7 +89,7 @@ svg_race.selectAll("text")
    .attr('x', d => x(Number(d.label)))
    .attr("y", label_y)
    .attr("font-family", "Courier")
-   .attr("font-size", "16px")
+   .attr("font-size", "14px")
    .attr("fill", "white");
 
 
@@ -109,7 +119,14 @@ d3.selectAll(".raceTexts")
   })
   .attr('x', d => x(Number(d.label)))
   d3.select("#raceCaption")
-    .text("New York City is one of the most diverse cities in the world.")
+    .text(population_race)
+  d3.select("#raceByPopulation")
+    .attr("class", "clickedButton")
+  d3.select("#raceByStops")
+    .attr("class", function(d) {
+                    if (this.getAttribute('class').includes('clickedButton'))
+                      {return "generalButton";}
+                    else {return this.getAttribute('class')}})
 });
 
 d3.select("#raceByStops")
@@ -126,7 +143,11 @@ d3.select("#raceByStops")
     })
     .attr('x', d => x(Number(d.label)))
   d3.select("#raceCaption")
-    .text("Yet most of the people stopped were Black.")
+    .text(stops_race)
+  d3.select("#raceByStops")
+    .attr("class", "clickedButton")
+  d3.select("#raceByPopulation")
+    .attr("class", "generalButton")
   });
 
 raceBreakout(race_stops_pop);

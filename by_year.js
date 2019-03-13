@@ -1,45 +1,39 @@
 const year_data = [
 
-    {
-      'race': '2009 (581,168 stops)','val': '0.228', 'tt': 22,
-      'offset': '0','label': 0.03, 'yr': 2009
-    }
-    ,
-    {
-      'race':'2010 (601,285 stops)','val': '0.23',  'tt': 23,
-      'offset': '.22','label': 0.26, 'yr': 2010
-    }
-    ,
-    {
-      'race': '2011 (685,724 stops)','val': '0.26',  'tt': 26,
-      'offset':'0.45',  'label': 0.5, 'yr': 2011
-    },
-    {
-      'race': "2012 - 2014 (770,549 stops)",'val': '0.20','tt': 20,
-      'offset':'0.71','label': 0.8, 'yr': 2012
-    },
-    {
-      'race': "",'val': '0.07',  'tt': 7,
-      'offset':'0.91','label': 0.8, 'yr': 2013
-    },
-    {
-      'race': "",'val': "0.02",'tt': 2,
-      'offset': "0.98",'label': 0.92, 'yr': 2014
-    }
+    {'race': '2009 (581,168 stops)','val': '0.228', 'tt': 22,
+      'offset': '0','label': 0.03, 'yr': 2009},
+    {'race':'2010 (601,285 stops)','val': '0.23',  'tt': 23,
+      'offset': '.22','label': 0.26, 'yr': 2010},
+    {'race': '2011 (685,724 stops)','val': '0.26',  'tt': 26,
+      'offset':'0.45',  'label': 0.5, 'yr': 2011},
+    {'race': "2012 - 2014 (770,549 stops)",'val': '0.20','tt': 20,
+      'offset':'0.71','label': 0.77, 'yr': 2012},
+    {  'race': "",'val': '0.07',  'tt': 7,
+      'offset':'0.91','label': 0.8, 'yr': 2013},
+    {  'race': "",'val': "0.02",'tt': 2,
+      'offset': "0.98",'label': 0.92, 'yr': 2014}
   ]
 
+  var yearFirst = "The number of stops increased steadily in the late 2000s"
+  var yearSecond = "By 2011 it had peaked throughout the city."
+  var yearThird = `After much protest, including a March to Mayor Bloombergs
+                  residence the number of stops decreased after 2012`
+
+  const year_height = 200
+  const year_label_y = 100
+
     const margin = {top: 20, right: 20, bottom: 30, left: 40}
-    const width = screen.width*.975;
-    const height = 200
-    const label_y = 100
+    const width = screen.width*.8;
+    const height = screen.height * .1
+    const label_y = height / 2
 
       const x = d3.scaleLinear()
         .domain([0, 1])
         .range([1, width]).nice()
 
       const y = d3.scaleBand()
-        .domain([0, height])
-        .range([height, 0])
+        .domain([0, year_height])
+        .range([year_height, 0])
         .padding(0.1)
 
 
@@ -54,49 +48,56 @@ const year_data = [
 
       const svg_year = d3.select(".by_year").append("svg")
         .attr("width", width)
-        .attr("height", height)
+        .attr("height", year_height)
 
-function yearBreakout (data) {
+function yearBreakout (data, firstCaption) {
+
+  d3.select("#yearCaption").text(d=>firstCaption);
+
 
   const joinYearBlocks = svg_year.selectAll("rect")
        .data(data);
 
        joinYearBlocks.enter()
        .append("rect")
+       .attr("width", 0)
        .attr("class", "yearBlocks")
        .merge(joinYearBlocks)
        .attr("fill", function(d) { return year_z(d.val); })
-       .attr("width", d => x(Number(d.val)))
-       .attr("height", height)
+       .attr("height", year_height)
        .attr("y",y)
        .attr('x', d => x(Number(d.offset)))
        .on("mouseover", function() { tooltip_yr.style("display", null); })
-   .on("mouseout", function() { tooltip_yr.style("display", "none"); })
-   .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-5;
-     var yPosition = d3.mouse(this)[1]-60;
-     tooltip_yr.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-     tooltip_yr.select("text").text(d.tt + "%")
-     tooltip_yr.attr("fill", "black")
-     tooltip_yr.attr("font-family", "Courier")
-     tooltip_yr.attr("font-size", "18px");
-      });
+       .on("mouseout", function() { tooltip_yr.style("display", "none"); })
+       .on("mousemove", function(d) {
+         var xPosition = d3.mouse(this)[0]-5;
+         var yPosition = d3.mouse(this)[1]-60;
+         tooltip_yr.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+         tooltip_yr.select("text").text(d.tt + "%")
+         tooltip_yr.attr("fill", "white")
+         tooltip_yr.attr("font-family", "Courier")
+         tooltip_yr.attr("font-size", "14px");
+      })
+      .transition()
+      .duration(400).delay(function(d,i) {return i * 300})
+      .attr("width", d => x(Number(d.val)));
 
-    const joinYearTexts = svg_year.selectAll("text")
+    const joinYearTexts = svg_year.selectAll(".yearTexts")
 		   .data(data);
 
 		   joinYearTexts.enter()
 		   .append("text")
        .attr("class", "yearTexts")
-       .merge(joinYearTexts)
 		   .text(function(d) {
 		   		return d.race;
 		   })
        .attr('x', d => x(Number(d.label)))
-		   .attr("y", label_y)
+		   .attr("y", year_label_y)
 		   .attr("font-family", "Courier")
 		   .attr("font-size", "16px")
-		   .attr("fill", "white");
+		   .attr("fill", "white")
+       .transition().delay(500)
+
 
        // Prep the tooltip bits, initial display is hidden
     var tooltip_yr = svg_year.append("g")
@@ -104,7 +105,7 @@ function yearBreakout (data) {
     .style("display", "none")
 
     tooltip_yr.append("text")
-      .attr("dy", label_y)
+      .attr("dy", year_label_y)
 
     }
 
@@ -118,9 +119,9 @@ function yearBreakout (data) {
         d3.select("#yearCaption")
           .text(function(end) {
                 if (caption === "second") {
-                  greeting = "By 2011 it had peaked throughout the city.";
+                  greeting = yearSecond;
                 } else if (caption === "third") {
-                  greeting = "After much protest, including a March to Mayor Bloombergs residence the number of stops decreased after 2012";
+                  greeting = yearThird;
                 }
               return greeting})
               d3.select("#all_years")
@@ -131,12 +132,14 @@ function yearBreakout (data) {
                         greeting = "Decline";
                       }
                     return greeting})
-              .attr("background-color", "red")
+              d3.select("#all_years")
+                .attr("class", function() {
+                                if (caption === "third")
+                                  {return "disabledButton";
+                                } else return "secondButton"})
         end = 6
         caption = "third"
 
       });
 
-
-
-  yearBreakout(year_data.slice(0,2))
+  yearBreakout(year_data.slice(0,2), yearFirst)

@@ -12,7 +12,13 @@ const gpop_data = [
         'offset': '0.069948','label': 0.5}
     ]
 
+var population_gender = "The population of NYC is fairly evenly split."
+var stops_gender = "But the vast majority of people stopped were male."
+
 function genderBreakout(data) {
+
+  d3.select("#genderCaption").text(d=>population_gender);
+
 
   const gpop_svg = d3.select(".gender_breakdowns").append("svg")
     .attr("width", width)
@@ -22,7 +28,7 @@ function genderBreakout(data) {
     .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
   var gen_z = d3.scaleOrdinal()
-      .range(["#C732D5","#4369EB"]);
+      .range(["#C732D5","#32D59B"]);
 
 gpop_svg.selectAll("rect")
        .data(data)
@@ -37,13 +43,13 @@ gpop_svg.selectAll("rect")
        .on("mouseover", function() { tooltip_gender.style("display", null); })
    .on("mouseout", function() { tooltip_gender.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-5;
+     var xPosition = d3.mouse(this)[0]-10;
      var yPosition = d3.mouse(this)[1]-60;
      tooltip_gender.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_gender.select("text").text(d.tt + "%")
      tooltip_gender.attr("fill", "white")
      tooltip_gender.attr("font-family", "Courier")
-     tooltip_gender.attr("font-size", "18px");
+     tooltip_gender.attr("font-size", "14px");
       })
      ;
 
@@ -58,7 +64,7 @@ gpop_svg.selectAll("rect")
        .attr('x', d => x(Number(d.label)))
 		   .attr("y", label_y)
 		   .attr("font-family", "Courier")
-		   .attr("font-size", "16px")
+		   .attr("font-size", "14px")
 		   .attr("fill", "white");
 
        var tooltip_gender = gpop_svg.append("g")
@@ -85,7 +91,14 @@ gpop_svg.selectAll("rect")
     })
     .attr('x', d => x(Number(d.label)))
   d3.select("#genderCaption")
-    .text("The population of NYC is fairly evenly split.")
+    .text(population_gender)
+  d3.select("#genderByPopulation")
+    .attr("class", "clickedButton")
+  d3.select("#genderByStops")
+    .attr("class", function(d) {
+                    if (this.getAttribute('class').includes('clickedButton'))
+                      {return "generalButton";}
+                    else {return this.getAttribute('class')}})
   });
 
   d3.select("#genderByStops")
@@ -102,7 +115,11 @@ gpop_svg.selectAll("rect")
     })
     .attr('x', d => x(Number(d.label)))
   d3.select("#genderCaption")
-    .text("But the vast majority of people stopped were male.")
+    .text(stops_gender)
+    d3.select("#genderByStops")
+      .attr("class", "clickedButton")
+    d3.select("#genderByPopulation")
+      .attr("class", "generalButton")
   });
 
   genderBreakout(gpop_data);

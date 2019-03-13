@@ -1,103 +1,88 @@
-mosaic_mosaic_data = [
-              {"race": "Black non-Hispanic", "frisked":"yes", "value": 2500},
-              {"race": "Black non-Hispanic", "frisked":"yes", "value": 2000},
-              {"race": "Hispanic", "frisked":"yes", "value": 1900},
-              {"race": "Hispanic", "frisked":"yes", "value": 1500},
-              {"race": "Other", "frisked":"yes", "value": 900},
-              {"race": "Other", "frisked":"yes", "value": 500},
-
-]
-
-var mwidth = 960,
-    mheight = 500,
-    mmargin = 20;
-
-var mx = d3.scale.linear()
-    .range([0, mwidth - 3 * mmargin]);
-
-var my = d3.scale.linear()
-    .range([0, mheight - 2 * mmargin]);
-
-var mz = d3.scale.category10();
-
-var mn = d3.format(",d"),
-    mp = d3.format("%");
-
-var mosaic_svg = d3.select("mosaic_by_frisk").append("mosaic_svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + 2 * margin + "," + margin + ")");
+const mosaic_data= [
+    {'race': 'Black non-Hispanic frisked', 'val': '0.228', 'tt': 22,
+      'offset': 0,'label': 0.02, 'y_offset':0.58, 'yheight':0.42},
+      {'race': 'Black non-Hispanic not frisked', 'val': '0.228', 'tt': 22,
+        'offset': 0,'label': 0.02, 'y_offset':0, 'yheight':0.58}
+  ]
 
 
-  var offset = 0;
 
-  // Nest values by frisked. We assume each frisked+race is unique.
-  var friskeds = d3.nest()
-      .key(function(d) { return d.frisked; })
-      .entries(mosaic_data);
+var mwidth = 960
+var mheight = 500
+var mmargin = 20
 
-  // Compute the total sum, the per-frisked sum, and the per-race offset.
-  // You can use reduce rather than reduceRight to reverse the ordering.
-  // We also record a reference to the parent frisked for each race.
-  var sum = friskeds.reduce(function(v, p) {
-    return (p.offset = v) + (p.sum = p.values.reduceRight(function(v, d) {
-      d.parent = p;
-      return (d.offset = v) + d.value;
-    }, 0));
-  }, 0);
 
-  // Add x-axis ticks.
-  var xtick = svg.selectAll(".x")
-      .mosaic_data(x.ticks(10))
-    .enter().append("g")
-      .attr("class", "x")
-      .attr("transform", function(d) { return "translate(" + x(d) + "," + y(1) + ")"; });
+const mx = d3.scaleLinear()
+  .domain([0, 3000])
+  .range([1, mwidth]).nice()
 
-  xtick.append("line")
-      .attr("y2", 6)
-      .style("stroke", "#000");
+const my = d3.scaleBand()
+  .domain([0, 3000])
+  .range([1, 0])
+  .padding(0.1)
 
-  xtick.append("text")
-      .attr("y", 8)
-      .attr("text-anchor", "middle")
-      .attr("dy", ".71em")
-      .text(p);
+const svg_mosaic = d3.select(".mosaic_by_frisk").append("svg")
+  .attr("width", mwidth)
+  .attr("height", mheight)
 
-  // Add y-axis ticks.
-  var ytick = svg.selectAll(".y")
-      .mosaic_data(y.ticks(10))
-    .enter().append("g")
-      .attr("class", "y")
-      .attr("transform", function(d) { return "translate(0," + y(1 - d) + ")"; });
+svg_mosaic.append('g')
+  .attr('transform', `translate(${margin.left}, ${margin.top})`)
 
-  ytick.append("line")
-      .attr("x1", -6)
-      .style("stroke", "#000");
+  var oz = d3.scaleOrdinal()
+    .range(["#C732D5", "#8AC437", "#F65D3A","#4369EB", "#32D59B"]);
 
-  ytick.append("text")
-      .attr("x", -8)
-      .attr("text-anchor", "end")
-      .attr("dy", ".35em")
-      .text(p);
+function mosaic(data) {
 
-  // Add a group for each frisked.
-  var friskeds = svg.selectAll(".frisked")
-      .mosaic_data(friskeds)
-    .enter().append("g")
-      .attr("class", "frisked")
-      .attr("xlink:title", function(d) { return d.key; })
-      .attr("transform", function(d) { return "translate(" + x(d.offset / sum) + ")"; });
+const join = svg_mosaic.selectAll("rect")
+   .data(data);
 
-  // Add a rect for each race.
-  var races = friskeds.selectAll(".race")
-      .mosaic_data(function(d) { return d.values; })
-    .enter().append("a")
-      .attr("class", "race")
-      .attr("xlink:title", function(d) { return d.race + " " + d.parent.key + ": " + n(d.value); })
-    .append("rect")
-      .attr("y", function(d) { return y(d.offset / d.parent.sum); })
-      .attr("height", function(d) { return y(d.value / d.parent.sum); })
-      .attr("width", function(d) { return x(d.parent.sum / sum); })
-      .style("fill", function(d) { return z(d.race); });
-;
+   join.enter()
+   .append("rect")
+   .attr("width", 0)
+   .attr("class","outBlocks")
+   .merge(join)
+   .attr("fill", function(d) { return oz(d.val); })
+   .attr("width", d => x(Number(d.val)))
+   .attr("height", x(Number(d.y_height)))
+   .attr("y",d => x(Number(d.y_offset)))
+   .attr('x', d => x(Number(d.offset)))
+   .on("mouseover", function() { tooltip.style("display", null); })
+.on("mouseout", function() { tooltip.style("display", "none"); })
+.on("mousemove", function(d) {
+ var xPosition = d3.mouse(this)[0]-5;
+ var yPosition = d3.mouse(this)[1]-30;
+ tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+ tooltip.select("text").text(d.tt + "%")
+ tooltip.attr("fill", "white")
+ tooltip.attr("font-family", "Courier")
+ tooltip.attr("font-size", "14px");
+})
+.transition().delay(function(d,i) {return i * 1000}).duration(1000)
+.attr("width", d => x(Number(d.val)));
+
+var join_labels = svg_mosaic.selectAll("outTexts")
+.data(data);
+
+join_labels.enter()
+.append("text")
+.attr("class","outTexts")
+.text(function(d) {
+  return d.race;
+})
+.attr('x', d => x(Number(d.label)))
+.attr("y", label_y)
+.attr("font-family", "Courier")
+.attr("font-size", "14px")
+.attr("fill", "white");
+
+// Prep the tooltip bits, initial display is hidden
+var tooltip = svg_mosaic.append("g")
+.attr("class", "tooltip")
+.style("display", "none")
+
+tooltip.append("text")
+  .attr("dy", label_y)
+
+}
+
+mosaic(mosaic_data)

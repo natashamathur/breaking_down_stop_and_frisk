@@ -3,70 +3,53 @@
 <body bgcolor="#D3D3DE">
 <head>
   <meta charset="utf-8">
-  <title align='center'>Breaking Down Stop-and-Frisk</title>
+  <title align='center'>Blocks of Stops</title>
   <link rel="stylesheet" type="text/css" href="overall_main.css">
+
 
 </head>
 
-<h1 id="topOfPage" style="font-family:Tahoma;" align='center'>Breaking Down Stop-and-Frisk
-</h1>
+<h1 id="topOfPage" style="font-family:Tahoma;" align='center'>Blocks of Stops</h1>
+<h2 style="font-family:Tahoma;" align='center'>Stop-and-Frisk in NYC by the numbers</h2>
 <p align='center' style="font-family: Courier">More information and
     visualizations on this topic can be found
     <a href="https://natashamathur.github.io/nypd_activity_visualized/">here</a>.
 </p>
-<br></br>
-<div id = "buttons" align='center'>
-  <button class="topButton" onClick="window.location.reload()">Refresh</button>
-  <button class="topButton"><a href="#by_year">By Year</a></button>
-  <button class="topButton"><a href="#by_race">By Race</a></button>
-  <button class="topButton"><a href="#by_gender">By Gender</a></button>
-  <button class="topButton"><a href="#by_borough">By Borough</a></button>
-  <button class="topButton"><a href="#by_outcome">By Outcome</a></button>
-</div>
+
 <br></br>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<body>
+<body align='center'>
 
-  <div> </div>
-  <h2 id="by_year" style="font-family:Tahoma;">Number of Stops from 2009 - 2016</h2>
-  <p style="font-family:Courier;" id="yearCaption"> The number of stops increased steadily in the late 2000s </p>
+  <h1 align="center" style="font-family:Tahoma;">Number of Stops from 2009 - 2016: </h1>
+  <p style="font-family:Courier;" id="yearCaption"></p>
 
   <div id = "buttons">
     <button class="secondButton" id="all_years"> Rise </button>
   </div>
-  <div class="by_year">
+  <div align='center' class="by_year">
     <script src="by_year.js"></script>
   </div>
-  <br></br>
   <h1 align="center" style="font-family:Tahoma;">Focusing on 2011: </h1>
-  <br></br>
 
-  <h2 id="by_race" style="font-family:Tahoma;">Breakdown by Race </h2>
 
-  <p style="font-family:Courier;" id="raceCaption"> New York City is one of the most diverse cities in the world </p>
+  <div width="20"><p align='center'style="font-family:Courier;" id="raceCaption"></p></div>
 
-  <div id = "buttons">
+  <div id = "buttons" align='center'>
     <button class="generalButton" id="raceByPopulation">by Population</button>
     <button class="secondButton" id="raceByStops">by Stops</button>
   </div>
-  <div class="race_breakdowns">
+  <div class="race_breakdowns" align='center'>
     <script src="race_breakdowns.js"></script>
   </div>
 
-  <h2 style="font-family:Tahoma;"> Mosaic </h2>
-  <div class="mosaic_by_frisk">
-    <script src="mosaic.js"></script>
-  </div>
 
 
+  <!-- <h2 id="by_gender" class="chartHeader">Breakdown By Gender</h2> -->
 
-  <h2 id="by_gender" style="font-family:Tahoma;">Breakdown By Gender</h2>
+  <p style="font-family:Courier;" id="genderCaption"></p>
 
-  <p style="font-family:Courier;" id="genderCaption"> The ratio of men and women in New York City
-    is approximately even. </p>
-
-  <div id = "buttons">
+  <div id = "buttons" align='center'>
     <button class="generalButton" id="genderByPopulation">by Population</button>
     <button class="secondButton" id="genderByStops">by Stops</button>
   </div>
@@ -74,9 +57,8 @@
     <script src="gender_breakdowns.js"></script>
   </div>
 
-  <h2 id="by_borough" style="font-family:Tahoma;">Breakdown By Borough</h2>
-    <p id = "boroughCaption" style="font-family:Courier; "> Brooklyn is the
-    most populous borough, while Staten Island is the least. </p>
+  <!-- <h2 id="by_borough" class="chartHeader">Breakdown By Borough</h2> -->
+    <p id = "boroughCaption" style="font-family:Courier; "> </p>
 
   <div id = "buttons">
     <button class="generalButton" id="boroughByPopulation">by Population</button>
@@ -87,23 +69,24 @@
   </div>
 
 
-  <h2 id="by_outcome" style="font-family:Tahoma">What was the outcome?</h2>
-  <p id=outCaption style="font-family:Courier;"> Only 12% of stops actually resulted in further
-  action. </p>
-  <div id = "buttons">
-    <button class="secondButton" id="OutcomeMover">Next: </button>
-  </div>
+  <!-- <h2 id="by_outcome" style="font-family:Tahoma">What was the outcome?</h2> -->
+ <p id=outCaption style="font-family:Courier;"> Only 12% of stops actually resulted in further
+ action. </p>
+ <div id = "buttons">
+   <button class="secondButton" id="OutcomeMover">Next: </button>
+ </div>
 
-  <div class="outcomes">
-    <script src="outcomes.js"></script>
-  </div>
+ <div class="outcomesB">
+   <script src="outcome_breakdown.js"></script>
+ </div>
 
-  <br></br>
-  <br></br>
 
-<div id = "buttons" align="center">
+  <h1 align="center" style="font-family:Tahoma;">Mosaic? </h1>
+  <!-- <div class="mosaic_by_frisk">
+    <script src="mosaic.js"></script>
+  </div> -->
+
   <button class="topButton"><a href="#topOfPage">Back to Top</a></button>
-</div>
 
 </body>
 </html>

@@ -24,7 +24,13 @@ const borough_stops= [
       'offset':'0.945',  'label': 0.958}
     ]
 
+var population_borough = "Brooklyn is the most populous borough, while Staten Island is the least."
+var stops_borough = "The number of stops made is actually proportional to the relative population of each borough."
+
 function boroughBreakout(data) {
+
+  d3.select("#boroughCaption").text(d=>population_borough);
+
 
   var z = d3.scaleOrdinal()
     .range(["#C732D5", "#8AC437", "#F65D3A","#4369EB", "#32D59B"]);
@@ -49,13 +55,13 @@ function boroughBreakout(data) {
        .on("mouseover", function() { tooltip_borough.style("display", null); })
    .on("mouseout", function() { tooltip_borough.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-5;
+     var xPosition = d3.mouse(this)[0]-1;
      var yPosition = d3.mouse(this)[1]-60;
      tooltip_borough.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_borough.select("text").text(d.tt + "%")
      tooltip_borough.attr("fill", "white")
      tooltip_borough.attr("font-family", "Courier")
-     tooltip_borough.attr("font-size", "18px");
+     tooltip_borough.attr("font-size", "14px");
       })
     .exit().transition()
      ;
@@ -71,7 +77,7 @@ svg_borough.selectAll("text")
    .attr('x', d => x(Number(d.label)))
    .attr("y", label_y)
    .attr("font-family", "Courier")
-   .attr("font-size", "16px")
+   .attr("font-size", "14px")
    .attr("fill", "white");
 
    // Prep the tooltip bits, initial display is hidden
@@ -97,7 +103,14 @@ d3.selectAll(".boroughTexts")
   })
   .attr('x', d => x(Number(d.label)))
   d3.select("#boroughCaption")
-    .text("Brooklyn is the most populous borough, while Staten Island is the least.")
+    .text(population_borough)
+    d3.select("#boroughByPopulation")
+      .attr("class", "clickedButton")
+    d3.select("#boroughByStops")
+      .attr("class", function(d) {
+                      if (this.getAttribute('class').includes('clickedButton'))
+                        {return "generalButton";}
+                      else {return this.getAttribute('class')}})
 });
 
 d3.select("#boroughByStops")
@@ -113,7 +126,11 @@ d3.select("#boroughByStops")
     })
     .attr('x', d => x(Number(d.label)))
     d3.select("#boroughCaption")
-      .text("The number of stops made is actually proportional to the relative population of each borough.")
+      .text(stops_borough)
+    d3.select("#boroughByStops")
+      .attr("class", "clickedButton")
+      d3.select("#boroughByPopulation")
+        .attr("class", "generalButton")
   });
 
 boroughBreakout(borough_pop);

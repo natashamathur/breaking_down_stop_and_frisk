@@ -4,13 +4,16 @@
   padding: 10px 10px;
   font-size: 14px;
   font-family: Courier;
-  font-color: black;
+}
+
+.chartHeader {
+  font-size: 18px;
+  font-family: Tahoma;
 }
 
 .generalButton {
   background-color: #F4F4F4;
   border-color: black;
-  border-weight: 5px;
   padding: 5px 5px;
   font-size: 12px;
   font-weight: bold;
@@ -20,7 +23,6 @@
 .secondButton {
   background-color: #7A1706;
   border-color: black;
-  border-weight: 5px;
   padding: 5px 5px;
   color: #D3D3DE;
   font-size: 12px;
@@ -34,5 +36,34 @@
   border-color: none;
   background-color: #D3D3DE;
   border-color: #F4F4F4;
+}
 
+.disabledButton{
+  cursor: not-allowed;
+  pointer-events: none;
+
+  /*Button disabled - CSS color class*/
+  background-color: #D3D3DE;
+  border-color: black;
+  padding: 5px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Tahoma;
+  color: black;
+}
+
+.clickedButton {
+  background-color: #B6FFFE;
+  border-color: black;
+  padding: 5px 5px;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
+.caption {
+  height: 200px;
+  width: 50%;
+  background-color: powderblue;
 }
