@@ -34,6 +34,8 @@ var stops_race = `Yet most of the people stopped were Black Yet most of the peop
 
 function raceBreakout(data) {
 
+  d3.select("#raceCaption").text(d=>population_race);
+
   const race_svg = d3.select(".rb").append("svg")
     .attr("width", width)
     .attr("height", height)
