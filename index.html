@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title align='center'>Blocks of Stops</title>
   <link rel="stylesheet" type="text/css" href="overall_main.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 
 </head>
@@ -12,7 +13,7 @@
 <h1 id="topOfPage" style="font-family:Tahoma;" align='center'>Blocks of Stops</h1>
 <h2 style="font-family:Tahoma;" align='center'>Stop-and-Frisk in NYC by the numbers</h2>
 <p align='center' style="font-family: Courier">More information and
-    visualizations on this topic can be found
+    charts on this topic can be found
     <a href="https://natashamathur.github.io/nypd_activity_visualized/">here</a>.
 </p>
 
@@ -21,35 +22,33 @@
 
 <body align='center'>
 
-  <h1 align="center" style="font-family:Tahoma;">Number of Stops from 2009 - 2016: </h1>
+  <h1 style="font-family:Tahoma;">Number of Stops from 2009 - 2016: </h1>
   <p style="font-family:Courier;" id="yearCaption"></p>
 
-  <div id = "buttons">
+  <div>
     <button class="secondButton" id="all_years"> Rise </button>
   </div>
-  <div align='center' class="by_year">
+  <div class="by_year">
     <script src="by_year.js"></script>
   </div>
+
+
   <h1 align="center" style="font-family:Tahoma;">Focusing on 2011: </h1>
 
+  <p align='center' style="font-family:Courier;" id="raceCaption"></p>
+  <div>
+      <button class="generalButton" id="raceByPopulation">by Population</button>
+      <button class="secondButton" id="raceByStops">by Stops</button>
+    </div>
 
-  <div width="20"><p align='center'style="font-family:Courier;" id="raceCaption"></p></div>
-
-  <div id = "buttons" align='center'>
-    <button class="generalButton" id="raceByPopulation">by Population</button>
-    <button class="secondButton" id="raceByStops">by Stops</button>
-  </div>
-  <div class="race_breakdowns" align='center'>
-    <script src="race_breakdowns.js"></script>
-  </div>
-
+    <div class="rb">
+      <script src="race2.js"></script>
+    </div>
 
 
-  <!-- <h2 id="by_gender" class="chartHeader">Breakdown By Gender</h2> -->
+  <p align='center' style="font-family:Courier;" id="genderCaption"></p>
 
-  <p style="font-family:Courier;" id="genderCaption"></p>
-
-  <div id = "buttons" align='center'>
+<div>
     <button class="generalButton" id="genderByPopulation">by Population</button>
     <button class="secondButton" id="genderByStops">by Stops</button>
   </div>
@@ -57,8 +56,7 @@
     <script src="gender_breakdowns.js"></script>
   </div>
 
-  <!-- <h2 id="by_borough" class="chartHeader">Breakdown By Borough</h2> -->
-    <p id = "boroughCaption" style="font-family:Courier; "> </p>
+  <p id = "boroughCaption" style="font-family:Courier; "> </p>
 
   <div id = "buttons">
     <button class="generalButton" id="boroughByPopulation">by Population</button>
@@ -68,23 +66,26 @@
     <script src="borough_breakdowns.js"></script>
   </div>
 
-
-  <!-- <h2 id="by_outcome" style="font-family:Tahoma">What was the outcome?</h2> -->
  <p id=outCaption style="font-family:Courier;"> Only 12% of stops actually resulted in further
  action. </p>
  <div id = "buttons">
    <button class="secondButton" id="OutcomeMover">Next: </button>
  </div>
-
  <div class="outcomesB">
    <script src="outcome_breakdown.js"></script>
  </div>
+<br></br>
 
+  <h1 align="center" style="font-family:Tahoma;"> Who was frisked? </h1>
+  
+  <p id=mC style="font-family: Courier;"></p>
+  <div>
+    <button class="secondButton" id="MosaicMover">Next Group: </button>
+  </div>
+  <div class="mosaic_by_frisk">
+    <script = src="mosaic_frisk.js"></script>
+  </div>
 
-  <h1 align="center" style="font-family:Tahoma;">Mosaic? </h1>
-  <!-- <div class="mosaic_by_frisk">
-    <script src="mosaic.js"></script>
-  </div> -->
 
   <button class="topButton"><a href="#topOfPage">Back to Top</a></button>
 

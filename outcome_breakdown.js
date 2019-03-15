@@ -70,15 +70,14 @@ function outBreakout(data) {
    .on("mouseout", function() { tooltip.style("display", "none"); })
    .on("mousemove", function(d) {
      var xPosition = d3.mouse(this)[0]-10;
-     var yPosition = d3.mouse(this)[1]-60;
+     var yPosition = d3.mouse(this)[1]-80;
      tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip.select("text").text(d.tt + "%")
      tooltip.attr("fill", "white")
      tooltip.attr("font-family", "Courier")
      tooltip.attr("font-size", "14px");
       })
-      .transition()
-      .duration(1000).delay(300)
+      .transition().duration(2000)
       .attr("width", d => x(Number(d.val)))
       ;
 
@@ -88,15 +87,21 @@ var join_labels = svg_outcomes.selectAll("outTexts")
    join_labels.enter()
    .append("text")
    .attr("class","outTexts")
+   .attr("y", label_y)
+   .attr("font-family", "Courier")
+   .attr("font-size", "4px")
+   .attr("fill", "white")
+   .attr("text-anchor", "middle")
+   .attr('x', d => x(Number(d.offset) + Number(d.val)/2 ))
+   .transition().duration(function(d,i) { if (i <= 2) {
+     return 0;} else {return 1500;}})
    .text(function(d) {
       return d.race;
    })
-   .attr("y", label_y)
-   .attr("font-family", "Courier")
+   .transition().duration(2000)
    .attr("font-size", "14px")
-   .attr("fill", "white")
-   .transition().duration(0).delay(1000)
-   .attr('x', d => x(Number(d.label)))
+
+
 ;
 
    // Prep the tooltip bits, initial display is hidden

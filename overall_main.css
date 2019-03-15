@@ -15,7 +15,7 @@
   background-color: #F4F4F4;
   border-color: black;
   padding: 5px 5px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: Tahoma;
 }
@@ -25,9 +25,15 @@
   border-color: black;
   padding: 5px 5px;
   color: #D3D3DE;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: Tahoma;
+  box-shadow: 5px 5px 5px black;
+}
+
+.race_breakdowns {
+  position: absolute;
+  right
 }
 
 .signature {
@@ -41,12 +47,10 @@
 .disabledButton{
   cursor: not-allowed;
   pointer-events: none;
-
-  /*Button disabled - CSS color class*/
   background-color: #D3D3DE;
   border-color: black;
   padding: 5px 5px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: Tahoma;
   color: black;
@@ -57,13 +61,10 @@
   border-color: black;
   padding: 5px 5px;
   color: black;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-family: Tahoma;
-}
-
-.caption {
-  height: 200px;
-  width: 50%;
-  background-color: powderblue;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
 }

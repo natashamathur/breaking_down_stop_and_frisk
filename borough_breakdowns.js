@@ -56,7 +56,7 @@ function boroughBreakout(data) {
    .on("mouseout", function() { tooltip_borough.style("display", "none"); })
    .on("mousemove", function(d) {
      var xPosition = d3.mouse(this)[0]-1;
-     var yPosition = d3.mouse(this)[1]-60;
+     var yPosition = d3.mouse(this)[1]-80;
      tooltip_borough.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_borough.select("text").text(d.tt + "%")
      tooltip_borough.attr("fill", "white")

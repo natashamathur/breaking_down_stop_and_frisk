@@ -19,7 +19,6 @@ function genderBreakout(data) {
 
   d3.select("#genderCaption").text(d=>population_gender);
 
-
   const gpop_svg = d3.select(".gender_breakdowns").append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -44,7 +43,7 @@ gpop_svg.selectAll("rect")
    .on("mouseout", function() { tooltip_gender.style("display", "none"); })
    .on("mousemove", function(d) {
      var xPosition = d3.mouse(this)[0]-10;
-     var yPosition = d3.mouse(this)[1]-60;
+     var yPosition = d3.mouse(this)[1]-80;
      tooltip_gender.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_gender.select("text").text(d.tt + "%")
      tooltip_gender.attr("fill", "white")
@@ -61,7 +60,8 @@ gpop_svg.selectAll("rect")
 		   .text(function(d) {
 		   		return d.race;
 		   })
-       .attr('x', d => x(Number(d.label)))
+       .attr("text-anchor", "middle")
+       .attr('x', d => x(Number(d.offset) + Number(d.val)/2 ))
 		   .attr("y", label_y)
 		   .attr("font-family", "Courier")
 		   .attr("font-size", "14px")
