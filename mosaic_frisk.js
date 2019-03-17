@@ -87,11 +87,6 @@ function mosaicBreakout(data) {
        .attr("class", "mosaicBlocks")
        .merge(joinMosaic)
        .attr("fill", function(d, i) { return z((d.race + " " + d.frisked)); })
-       // .attr("opacity", function(d) {if (d.frisked === "yes"){return 1;
-       // } else {
-       //   return 0.2;
-       // }})
-       .attr("width", d => x(Number(d.x_val)))
        .attr("height", d => x(Number(d.y_val)/3))
        .attr('x', d => x(Number(d.x_offset)))
        .attr("y",d => x(Number(d.y_offset)/3))
@@ -106,6 +101,10 @@ function mosaicBreakout(data) {
      tooltip_mosaic.attr("font-family", "Courier")
      tooltip_mosaic.attr("font-size", "16px");
       })
+      .transition()
+      .duration(400)
+      .attr("width", d => x(Number(d.x_val)))
+
      ;
 
 joinMosaicText = svg_mosaic.selectAll("mosaicTexts")
@@ -115,15 +114,16 @@ joinMosaicText = svg_mosaic.selectAll("mosaicTexts")
    .append("text")
    .attr("class", "mosaicTexts")
    .attr("text-anchor", "middle")
-   .text(function(d) {
-      return d.combined;
-   })
    .attr('x', d => x(Number(d.lloc)))
    .attr("y", label_y*1.5)
    .attr("font-family", "Courier")
    .attr("font-size", "16px")
-   .attr("fill", "white");
-
+   .attr("fill", "white")
+   // .transition()
+   // .delay(500)
+   .text(function(d) {
+      return d.combined;
+   })
 
 
 
@@ -144,7 +144,13 @@ d3.select("#MosaicMover")
   end = end + 2
   mosaicBreakout(mosaic_data.slice(0,end))
   d3.select("#mC").text(mosaic_captions[cap_loc])
-  cap_loc = cap_loc + 1;
+  cap_loc = cap_loc + 1
+  console.log(cap_loc)
+  d3.select("#MosaicMover")
+    .attr("class", function() {
+      if (cap_loc === 5)
+        {return "disabledButton";
+      } else return "secondButton"});
 
 
 

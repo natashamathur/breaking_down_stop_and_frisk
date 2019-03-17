@@ -7,7 +7,7 @@ const gpop_data = [
 
   const gstops_data = [
       {'race': 'Female','val': '0.069948', 'tt': 7,
-        'offset': '0','label': 0.01},
+        'offset': '0','label': 0.03},
       {'race':'Male', 'val': '0.930052', 'tt': 93,
         'offset': '0.069948','label': 0.5}
     ]

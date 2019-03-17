@@ -14,8 +14,8 @@ const year_data = [
       'offset': "0.98",'label': 0.92, 'yr': 2014}
   ]
 
-  var yearFirst = "The number of stops increased steadily in the late 2000s"
-  var yearSecond = "By 2011 it had peaked throughout the city."
+  var yearFirst = "The number of stops increased steadily from 1990 to the late 2000s."
+  var yearSecond = "By 2011 it had peaked throughout the city even though the rates of violent crimes had been decreasing for the past 20 years."
   var yearThird = `After much protest, including a March to Mayor Bloombergs
                   residence the number of stops decreased after 2012`
 
