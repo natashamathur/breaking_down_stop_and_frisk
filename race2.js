@@ -32,6 +32,9 @@ var population_race = `New York City is one of the most diverse cities in the
 
 var stops_race = `Yet most of the people stopped were Black Yet most of the people stopped were Black.`;
 
+var rz = d3.scaleOrdinal()
+  .range(["#b32dbf", "#7cb031", "#dd5334","#3c5ed3", "#2dbf8b"]);
+
 function raceBreakout(data) {
 
   d3.select("#raceCaption").text(d=>population_race);
@@ -49,7 +52,7 @@ function raceBreakout(data) {
          .enter()
          .append("rect")
          .attr("class", "raceBlocks")
-         .attr("fill", function(d) { return z(d.val); })
+         .attr("fill", function(d) { return rz(d.val); })
          .attr("width", d => x(Number(d.val)))
          .attr("height", height)
          .attr("y",y)
@@ -57,13 +60,13 @@ function raceBreakout(data) {
          .on("mouseover", function() { tooltip_race.style("display", null); })
      .on("mouseout", function() { tooltip_race.style("display", "none"); })
      .on("mousemove", function(d) {
-       var xPosition = d3.mouse(this)[0]-10;
-       var yPosition = d3.mouse(this)[1]-80;
+       var xPosition = d3.mouse(this)[0]-28;
+       var yPosition = d3.mouse(this)[1]-25;
        tooltip_race.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
        tooltip_race.select("text").text(d.tt + "%")
        tooltip_race.attr("fill", "white")
-       tooltip_race.attr("font-family", "Courier")
-       tooltip_race.attr("font-size", "14px");
+       tooltip_race.attr("font-family", label_font)
+       tooltip_race.attr("font-size", "12px");
         })
      ;
 
@@ -79,8 +82,8 @@ function raceBreakout(data) {
        .attr('x', d => x(Number(d.label)))
        //.attr('x', d => x(Number(d.offset) + Number(d.val)/2 ))
 		   .attr("y", label_y)
-		   .attr("font-family", "Courier")
-		   .attr("font-size", "14px")
+		   .attr("font-family", label_font)
+		   .attr("font-size", "16px")
 		   .attr("fill", "white");
 
        var tooltip_race = race_svg.append("g")

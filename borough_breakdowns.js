@@ -27,6 +27,9 @@ const borough_stops= [
 var population_borough = "Brooklyn is the most populous borough, while Staten Island is the least."
 var stops_borough = "The number of stops made is actually proportional to the relative population of each borough."
 
+var bz = d3.scaleOrdinal()
+  .range(["#b32dbf", "#7cb031", "#dd5334","#3c5ed3", "#2dbf8b"]);
+
 function boroughBreakout(data) {
 
   d3.select("#boroughCaption").text(d=>population_borough);
@@ -47,7 +50,7 @@ function boroughBreakout(data) {
        .enter()
        .append("rect")
        .attr("class", "boroughBlocks")
-       .attr("fill", function(d) { return z(d.val); })
+       .attr("fill", function(d) { return bz(d.val); })
        .attr("width", d => x(Number(d.val)))
        .attr("height", height)
        .attr("y",y)
@@ -55,13 +58,13 @@ function boroughBreakout(data) {
        .on("mouseover", function() { tooltip_borough.style("display", null); })
    .on("mouseout", function() { tooltip_borough.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-1;
-     var yPosition = d3.mouse(this)[1]-80;
+     var xPosition = d3.mouse(this)[0]-28;
+     var yPosition = d3.mouse(this)[1]-25;
      tooltip_borough.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_borough.select("text").text(d.tt + "%")
      tooltip_borough.attr("fill", "white")
-     tooltip_borough.attr("font-family", "Courier")
-     tooltip_borough.attr("font-size", "14px");
+     tooltip_borough.attr("font-family", label_font)
+     tooltip_borough.attr("font-size", "12px");
       })
     .exit().transition()
      ;
@@ -76,7 +79,7 @@ svg_borough.selectAll("text")
    })
    .attr('x', d => x(Number(d.label)))
    .attr("y", label_y)
-   .attr("font-family", "Courier")
+   .attr("font-family", label_font)
    .attr("font-size", "14px")
    .attr("fill", "white");
 

@@ -1,76 +1,93 @@
-.topButton {
-  background-color: #F4F4F4; /* Green */
-  border: none;
-  padding: 10px 10px;
-  font-size: 14px;
-  font-family: Courier;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.chartHeader {
-  font-size: 18px;
+.headline {
   font-family: Tahoma;
+  text-align: center;
+  color: grey;
 }
+
+.caption {
+  max-width: 80%;
+  font-family: Tahoma;
+  color: grey;
+  font-size: 16px;
+}
+
+a {
+  color: grey;
+}
+
+/* buttons */
 
 .generalButton {
-  background-color: #F4F4F4;
-  border-color: black;
+  background-color: #18111e;
+  border-color: darkgrey;
   padding: 5px 5px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 11px;
   font-family: Tahoma;
+  color: darkgrey;
 }
 
 .secondButton {
-  background-color: #7A1706;
+  background-color: #18111e;
+  border-color: violet;
+  border-width: 2px;
+  padding: 5px 15px;
+  font-size: 11px;
+  font-family: Tahoma;
+  color: darkgrey;
+  box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;
+}
+
+.clickedButton {
+  background-color: darkgrey;
   border-color: black;
   padding: 5px 5px;
-  color: #D3D3DE;
-  font-size: 14px;
-  font-weight: bold;
+  color: #18111e;
+  font-size: 11px;
   font-family: Tahoma;
-  box-shadow: 5px 5px 5px black;
-}
-
-.race_breakdowns {
-  position: absolute;
-  right
-}
-
-.signature {
-  font-family: Courier;
-  font-size: 14px;
-  border-color: none;
-  background-color: #D3D3DE;
-  border-color: #F4F4F4;
+  box-shadow: inset 0 0 0 1px #27496d,inset 0 5px 10px #193047;
 }
 
 .disabledButton{
   cursor: not-allowed;
   pointer-events: none;
-  background-color: #D3D3DE;
-  border-color: black;
+  background-color: #18111e;
+  border-color: #18111e;
   padding: 5px 5px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 10px;
   font-family: Tahoma;
-  color: black;
+  color: darkgrey;
 }
 
-.clickedButton {
-  background-color: #B6FFFE;
-  border-color: black;
+.removedButton{
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #18111e;
+  border-color: #18111e;
   padding: 5px 5px;
-  color: black;
-  font-size: 14px;
   font-weight: bold;
   font-family: Tahoma;
-  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-          box-shadow: inset 0px 0px 5px #c1c1c1;
+  color: #18111e;
 }
 
-.caption {
-  max-width: 80%;
-  text-align: center;
-  justify-content: center;
+.topButton {
+  background-color: #18111e; /* Green */
+  border: none;
+  padding: 5px 5px;
+  font-size: 14px;
+  font-family: Tahoma;
 }
+
+/* Sources
+/* https://speckyboy.com/create-stylish-css-buttons/ */
+/* https://bl.ocks.org/emmasaunders/0016ee0a2cab25a643ee9bd4855d3464 */
+/* http://bl.ocks.org/mstanaland/6100713 */
+/* https://observablehq.com/@d3/stacked-normalized-horizontal-bar
+https://bl.ocks.org/jdmarlin/ebcc77f97207d1a4792d3bf250ab39d1
+https://bl.ocks.org/mjfoster83/7c9bdfd714ab2f2e39dd5c09057a55a0
+https://www.favicon-generator.org/search/DARK_BLUE/square */

@@ -1,43 +1,51 @@
-<!DOCTYPE html>
+<!DOCTYPE html>x
 <html lang="en">
-<body bgcolor="#D3D3DE">
-<head>
+<!-- <body bgcolor="#D3D3DE"> -->
+<body bgcolor="#18111e">
+<head >
   <meta charset="utf-8">
-  <title align='center'>Blocks of Stops</title>
+  <title>Blocks of Stops</title>
   <link rel="stylesheet" type="text/css" href="overall_main.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-
 </head>
-
-<h1 id="topOfPage" style="font-family:Tahoma;" align='center'>Blocks of Stops</h1>
-<h2 style="font-family:Tahoma;" align='center'>Stop-and-Frisk in NYC by the numbers</h2>
-<p align='center' style="font-family: Courier">More information and
-    charts on this topic can be found
-    <a href="https://natashamathur.github.io/nypd_activity_visualized/">here</a>.
-</p>
+<!-- <h1 id="topOfPage" class = 'headline' >Blocks of Stops</h1> -->
+<div id="topOfPage" align='center'>
+  <h1 class='headline' >Stop-and-Frisk in NYC By The Numbers</h1>
+  <p class='caption'>More information and charts on this topic can be found <a href="https://natashamathur.github.io/nypd_activity_visualized/">here</a>.</p>
+</div>
 
 <br></br>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <body align='center'>
 
-  <h1 style="font-family:Tahoma;">Number of Stops from 2009 - 2016: </h1>
-  <p class='caption' style="font-family:Courier;" id="yearCaption"></p>
+  <h1 class='headline'>Number of Stops from 2009 - 2016: </h1>
+  <p class='caption' id="yearCaption"></p>
 
-  <div>
+
+
     <button class="secondButton" id="all_years"> Rise </button>
   </div>
   <div class="by_year">
     <script src="by_year.js"></script>
   </div>
 
+  <p class='caption' id="mrCaption"></p>
 
-  <h1 align="center" style="font-family:Tahoma;">Focusing on 2011: </h1>
+  <div class="by_mr">
+    <script src="murders.js"></script>
+  </div>
 
-  <p class='caption'  style="font-family:Courier;" id="raceCaption"></p>
+  <br></br>
+    <br></br>
+      <br></br>
+
+  <h1 class=headline id="Sliders">Focusing on 2011: </h1>
+
+  <p class='caption' id="raceCaption"></p>
   <div>
-      <button class="generalButton" id="raceByPopulation">by Population</button>
+      <button class="clickedButton" id="raceByPopulation">by Population</button>
       <button class="secondButton" id="raceByStops">by Stops</button>
     </div>
 
@@ -46,27 +54,27 @@
     </div>
 
 
-  <p align='center' style="font-family:Courier;" id="genderCaption"></p>
+  <p class= 'caption' id="genderCaption"></p>
 
 <div>
-    <button class="generalButton" id="genderByPopulation">by Population</button>
+    <button class="clickedButton" id="genderByPopulation">by Population</button>
     <button class="secondButton" id="genderByStops">by Stops</button>
   </div>
   <div class="gender_breakdowns">
     <script src="gender_breakdowns.js"></script>
   </div>
 
-  <p id = "boroughCaption" style="font-family:Courier; "> </p>
+  <p id = "boroughCaption" class='caption'> </p>
 
   <div id = "buttons">
-    <button class="generalButton" id="boroughByPopulation">by Population</button>
+    <button class="clickedButton" id="boroughByPopulation">by Population</button>
     <button class="secondButton" id="boroughByStops">by Stops</button>
   </div>
   <div class="borough_breakdowns">
     <script src="borough_breakdowns.js"></script>
   </div>
 
- <p id=outCaption style="font-family:Courier;"> Only 12% of stops actually resulted in further
+ <p id=outCaption class='caption'> Only 12% of stops actually resulted in further
  action. </p>
  <div id = "buttons">
    <button class="secondButton" id="OutcomeMover">Next: </button>
@@ -76,9 +84,9 @@
  </div>
 <br></br>
 
-  <h1 align="center" style="font-family:Tahoma;"> Who was frisked? </h1>
+  <h1 class='headline' id="Frisked"> Who was frisked? </h1>
 
-  <p id=mC style="font-family: Courier;"></p>
+  <p id=mC class='caption'></p>
   <div>
     <button class="secondButton" id="MosaicMover">Next Group: </button>
   </div>
@@ -89,9 +97,7 @@
 
   <button class="topButton"><a href="#topOfPage">Back to Top</a></button>
   <br></br>
-  <br></br>
-  <p align='center' style="font-family: Tahoma">Natasha Mathur (University of Chicago, MSCAPP'19) <p>
-  <p align='center' style="font-family: Tahoma">Data Source :
-      <a href="https://data.cityofnewyork.us/Public-Safety/The-Stop-Question-and-Frisk-Data/ftxv-d5ix/data">NYC Open Data</a>.
+  <p class='caption'><a href="https://github.com/natashamathur">Natasha Mathur</a> (University of Chicago, MSCAPP'19)<br>Data Sources :
+      <a href="https://data.cityofnewyork.us/Public-Safety/The-Stop-Question-and-Frisk-Data/ftxv-d5ix/data">NYC Open Data</a>, <a href="https://www.criminaljustice.ny.gov/crimnet/ojsa/indexcrimes/Regions.pdf">Division of Criminal Justice Services</a><p>
 </body>
 </html>

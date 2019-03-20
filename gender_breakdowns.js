@@ -15,6 +15,9 @@ const gpop_data = [
 var population_gender = "The population of NYC is fairly evenly split."
 var stops_gender = "But the vast majority of people stopped were male."
 
+var gen_z = d3.scaleOrdinal()
+    .range(["#b32dbf", "#2dbf8b"]);
+
 function genderBreakout(data) {
 
   d3.select("#genderCaption").text(d=>population_gender);
@@ -25,9 +28,6 @@ function genderBreakout(data) {
 
   const gpop_g = gpop_svg.append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`)
-
-  var gen_z = d3.scaleOrdinal()
-      .range(["#C732D5","#32D59B"]);
 
 gpop_svg.selectAll("rect")
        .data(data)
@@ -42,13 +42,13 @@ gpop_svg.selectAll("rect")
        .on("mouseover", function() { tooltip_gender.style("display", null); })
    .on("mouseout", function() { tooltip_gender.style("display", "none"); })
    .on("mousemove", function(d) {
-     var xPosition = d3.mouse(this)[0]-10;
-     var yPosition = d3.mouse(this)[1]-80;
+     var xPosition = d3.mouse(this)[0]-28;
+     var yPosition = d3.mouse(this)[1]-25;
      tooltip_gender.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
      tooltip_gender.select("text").text(d.tt + "%")
      tooltip_gender.attr("fill", "white")
-     tooltip_gender.attr("font-family", "Courier")
-     tooltip_gender.attr("font-size", "14px");
+     tooltip_gender.attr("font-family", label_font)
+     tooltip_gender.attr("font-size", "12px");
       })
      ;
 
@@ -63,7 +63,7 @@ gpop_svg.selectAll("rect")
        .attr("text-anchor", "middle")
        .attr('x', d => x(Number(d.offset) + Number(d.val)/2 ))
 		   .attr("y", label_y)
-		   .attr("font-family", "Courier")
+		   .attr("font-family", label_font)
 		   .attr("font-size", "14px")
 		   .attr("fill", "white");
 

@@ -1,32 +1,46 @@
 const year_data = [
 
-    {'race': '2009 (581,168 stops)','val': '0.22', 'tt': 22,
-      'offset': '0','label': 0.11, 'yr': 2009},
-    {'race':'2010 (601,285 stops)','val': '0.23',  'tt': 23,
+    {'race': '2009 (581,168 stops)','val': '0.22',
+      'offset': '0','label': 0.09, 'yr': 2009},
+    {'race':'2010 (601,285 stops)','val': '0.23',
       'offset': '.22','label': 0.33, 'yr': 2010},
-    {'race': '2011 (685,724 stops)','val': '0.26',  'tt': 26,
-      'offset':'0.45',  'label': 0.58, 'yr': 2011},
+    {'race': '2011 (685,724 stops)','val': '0.26',
+      'offset':'0.45',  'label': 0.57, 'yr': 2011},
     {'race': "",'val': '0.20','tt': 20,
-      'offset':'0.71','label': 0.81, 'yr': 2012},
-    {  'race': "2012 - 2014 (770,549 stops)",'val': '0.07',  'tt': 7,
-      'offset':'0.91','label': 0.88, 'yr': 2013},
-    {  'race': "",'val': "0.02",'tt': 2,
+      'offset':'0.71','label': 0.99, 'yr': 2012},
+    {  'race': "2012 - 2014 (770,549 stops)",'val': '0.07',
+      'offset':'0.91','label': 0.9, 'yr': 2013},
+    {  'race': "",'val': "0.02",
       'offset': "0.98",'label': 0.92, 'yr': 2014}
   ]
 
-  var yearFirst = "The number of stops increased steadily from 1990 to the late 2000s."
-  var yearSecond = "By 2011 it had peaked throughout the city even though the rates of violent crimes had been decreasing for the past 20 years."
-  var yearThird = `After much protest, including a March to Mayor Bloombergs
-                  residence the number of stops decreased after 2012`
+  var yearFirst = `Stop-and-Frisk officially started in New York City in the early 1990s under Police Commissioner William
+                    Bratton and Mayor Rudy Giuliani. It codified the practice of making "Terry Stops" and followed the
+                    ideas put forth by the infamous broken windows theory.`
+  var yearSecond = `The number of stops continually increased for the next 15+ years even though the rates of violent crimes
+                    had been steadily decreasing. This reduction has been attributed to an improved economy, more educated
+                    police officers, and many other reasons - but not Stop-and-Frisk.`
+  var yearThird = `After much protest, including marches throughout the city that culminated in a silent march to Mayor Bloombergs
+                  residence, the number of stops decreased after 2011. The practice was eventually deemed unconstitutional in 2013.`
+
+  yC = [yearFirst, yearSecond, yearThird]
+
+  var mrFirst = `The number murders each year has been steadily decreasing since 1990.`
+  var mrSecond = `City officials claimed
+  that stop-frisk-contributed to decreasing the number of murders but as can be seen here there is no clear correlation`
+  var mrThird = `Contrary to supporters' claims, the rates of violent crimes did not increase once the number of stops decreased.`
+
+  mrC = [mrFirst, mrSecond, mrThird]
 
   const year_height = 200
   const year_label_y = 100
 
   const margin = {top: 20, right: 20, bottom: 30, left: 40}
   const width = screen.width*.8;
-  const height = screen.height * .15
+  const height = screen.height * .06
   const label_y = height / 2
   const tt_y = -60
+  var label_font = "Tahoma"
 
   const x = d3.scaleLinear()
     .domain([0, 1])
@@ -38,21 +52,24 @@ const year_data = [
     .padding(0.1)
 
 
-    var year_z = d3.scaleOrdinal()
-      .domain([2009, 2010, 2011, 2012, 2013, 2014])
-      .range(["#0000ff","#0000cd","#00008f", "#1908a8","#0000cd","#6666e1"]);
+  var year_z = d3.scaleOrdinal()
+    .domain([2009, 2010, 2011, 2012, 2013, 2014])
+    .range(["#0000ff","#0000cd","#00008f", "#1908a8","#0000cd","#6666e1"]);
 
-  var z = d3.scaleOrdinal()
-    .range(["#C732D5", "#8AC437", "#F65D3A","#4369EB", "#32D59B",
-    ]);
+var z = d3.scaleOrdinal()
+    .range(["#b32dbf", "#7cb031", "#dd5334","#3c5ed3", "black"]);
 
-    const svg_year = d3.select(".by_year").append("svg")
-      .attr("width", width)
-      .attr("height", year_height)
 
-function yearBreakout (data, firstCaption) {
 
-  d3.select("#yearCaption").text(d=>firstCaption);
+
+  const svg_year = d3.select(".by_year").append("svg")
+    .attr("width", width)
+    .attr("height", year_height)
+
+function yearBreakout (data) {
+
+  d3.select("#yearCaption").text(d=>yearFirst);
+  d3.select("#mrCaption").text(d=>mrFirst);
 
 
   const joinYearBlocks = svg_year.selectAll("rect")
@@ -70,12 +87,12 @@ function yearBreakout (data, firstCaption) {
        .on("mouseover", function() { tooltip_yr.style("display", null); })
        .on("mouseout", function() { tooltip_yr.style("display", "none"); })
        .on("mousemove", function(d) {
-         var xPosition = d3.mouse(this)[0]-5;
-         var yPosition = d3.mouse(this)[1]-60;
+         var xPosition = d3.mouse(this)[0]-30;
+         var yPosition = d3.mouse(this)[1]-110;
          tooltip_yr.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-         tooltip_yr.select("text").text(d.tt + "%")
+         tooltip_yr.select("text").text(`${Math.round(d.val * 100)}%`)
          tooltip_yr.attr("fill", "white")
-         tooltip_yr.attr("font-family", "Courier")
+         tooltip_yr.attr("font-family", label_font)
          tooltip_yr.attr("font-size", "14px");
       })
       .transition()
@@ -92,7 +109,7 @@ function yearBreakout (data, firstCaption) {
        .attr('x', d => x(Number(d.label)))
        .attr("y", year_label_y)
        .attr("font-size", "1px")
-		   .attr("font-family", "Courier")
+		   .attr("font-family", label_font)
 		   .attr("fill", "white")
        .transition().duration(400).delay(function(d,i) {
                                             if (i <= 3) {
@@ -120,34 +137,29 @@ function yearBreakout (data, firstCaption) {
 
       // code for buttons
       yend = 3
-      caption = "second"
+      loc_counter = 1
+
+
       d3.select("#all_years")
       .on("click", function(d,i) {
         yearBreakout(year_data.slice(0,yend))
-        d3.select("#yearCaption")
-          .text(function(yend) {
-                if (caption === "second") {
-                  greeting = yearSecond;
-                } else if (caption === "third") {
-                  greeting = yearThird;
-                }
-              return greeting})
+        mrBreakout(mr_data.slice(0,yend))
+        d3.select("#yearCaption").text(yC[loc_counter])
+        d3.select("#mrCaption").text(mrC[loc_counter])
         d3.select("#all_years")
           .text(function(yend) {
-              if (caption === "second") {
-                greeting = "Peak";
-              } else if (caption === "third") {
-                greeting = "Decline";
-              }
-                return greeting})
+              if (loc_counter === 1) {
+                return "Peak";
+              } else if (loc_counter === 2) {
+                return "Decline";
+              }})
         d3.select("#all_years")
           .attr("class", function() {
-            if (caption === "third")
+            if (loc_counter === 2)
               {return "disabledButton";
             } else return "secondButton"})
         yend = 6
-        caption = "third"
-
+        loc_counter = loc_counter + 1
       });
 
-  yearBreakout(year_data.slice(0,2), yearFirst)
+  yearBreakout(year_data.slice(0,2))
