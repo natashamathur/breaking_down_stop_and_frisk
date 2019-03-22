@@ -34,7 +34,7 @@ a {
 
 .secondButton {
   background-color: #18111e;
-  border-color: violet;
+  border-color: #feff8a;
   border-width: 2px;
   padding: 5px 15px;
   font-size: 11px;
@@ -82,12 +82,3 @@ a {
   font-size: 14px;
   font-family: Tahoma;
 }
-
-/* Sources
-/* https://speckyboy.com/create-stylish-css-buttons/ */
-/* https://bl.ocks.org/emmasaunders/0016ee0a2cab25a643ee9bd4855d3464 */
-/* http://bl.ocks.org/mstanaland/6100713 */
-/* https://observablehq.com/@d3/stacked-normalized-horizontal-bar
-https://bl.ocks.org/jdmarlin/ebcc77f97207d1a4792d3bf250ab39d1
-https://bl.ocks.org/mjfoster83/7c9bdfd714ab2f2e39dd5c09057a55a0
-https://www.favicon-generator.org/search/DARK_BLUE/square */

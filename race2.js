@@ -25,12 +25,10 @@ const race_stops_pop= [
     ]
 
 var population_race = `New York City is one of the most diverse cities in the
-                      world New York City is one of the most diverse cities in
-                      the world New York City is one of the most diverse cities in the
-                      world New York City is one of the most diverse cities in the
-                      world`;
+                      world. About 33% of the population is white, compared to 61% nationwide.`;
 
-var stops_race = `Yet most of the people stopped were Black Yet most of the people stopped were Black.`;
+var stops_race = `Regardless, 85% of the people stopped were Black or Hispanic, disproportionately
+                  high compared to the total population.`;
 
 var rz = d3.scaleOrdinal()
   .range(["#b32dbf", "#7cb031", "#dd5334","#3c5ed3", "#2dbf8b"]);

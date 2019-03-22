@@ -24,8 +24,8 @@ const borough_stops= [
       'offset':'0.945',  'label': 0.958}
     ]
 
-var population_borough = "Brooklyn is the most populous borough, while Staten Island is the least."
-var stops_borough = "The number of stops made is actually proportional to the relative population of each borough."
+var population_borough = "Brooklyn and Queens are the most populous boroughs, while Staten Island is the least. Chicago and Brooklyn have similar populations."
+var stops_borough = "The number of stops made is in fact proportional to the relative population of each borough."
 
 var bz = d3.scaleOrdinal()
   .range(["#b32dbf", "#7cb031", "#dd5334","#3c5ed3", "#2dbf8b"]);

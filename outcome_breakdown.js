@@ -100,7 +100,7 @@ tooltip.append("text")
   .on("click", function(d,i) {
     outBreakout(data_outcomes)
     d3.select("#outCaption")
-      .text("In most cases no actions were taken to follow up on the stop and/or frisk.")
+      .text("However, in most cases no follow-up of any kind was made to the stop and/or frisk.")
       d3.select("#OutcomeMover")
         .attr("class", "removedButton")
 

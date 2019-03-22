@@ -44,11 +44,13 @@ const mosaic_data= [
   mwidth = width
   mheight = height * 4
 
-  var bCap = "Black"
-  var hCap = "Hispanic"
-  var wCap = "White"
-  var oCap = "Other"
-  var aCap = "Asian"
+  var bCap = `A subject should only be frisked is after talking to them the officer
+              either thinks they have a weapon or have definitely been involved in a crime.`
+  var hCap = "However, Black and Hispanic subjects were frisked ~60% of the time."
+  var wCap = "In contrast, over half of the white people stopped were not frisked."
+  var oCap = `People of other ethnicities made up a relative minority of the stops,
+  but when stopped were still frisked more than white subjects.`
+  var aCap = "A higher percentage of Asian subjects were frisked than white subjects."
 
   mosaic_captions = [bCap, hCap, wCap, oCap, aCap]
 

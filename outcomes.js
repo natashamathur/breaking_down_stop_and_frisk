@@ -108,7 +108,7 @@ tooltip.append("text")
 
   d3.select("#OutcomeMover")
   .on("click", function(d,i) {
-    outBreakout(data_outcomes)
+    outBreakout(data_outcomes.slice(0,3))
     d3.select("#outCaption")
       .text("In most cases no actions were taken to follow up on the stop and/or frisk.")
 

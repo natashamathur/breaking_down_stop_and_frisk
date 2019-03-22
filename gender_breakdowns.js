@@ -12,8 +12,8 @@ const gpop_data = [
         'offset': '0.069948','label': 0.5}
     ]
 
-var population_gender = "The population of NYC is fairly evenly split."
-var stops_gender = "But the vast majority of people stopped were male."
+var population_gender = "The population of NYC is fairly evenly split, as is to be expected."
+var stops_gender = "Yet few of the people stopped were women."
 
 var gen_z = d3.scaleOrdinal()
     .range(["#b32dbf", "#2dbf8b"]);
