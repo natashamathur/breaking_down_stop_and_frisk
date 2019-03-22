@@ -5,7 +5,7 @@ Data comes from the [`NYC Open Data`](https://opendata.cityofnewyork.us/) portal
 
 [Accompanying Static Graphs](https://natashamathur.github.io/nypd_activity_visualized/)
 
-Sources I consulted include:
+Sources referenced:
 * https://speckyboy.com/create-stylish-css-buttons/ */
 * https://bl.ocks.org/emmasaunders/0016ee0a2cab25a643ee9bd4855d3464 */
 * http://bl.ocks.org/mstanaland/6100713 */
