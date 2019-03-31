@@ -5,11 +5,3 @@ Data comes from the [`NYC Open Data`](https://opendata.cityofnewyork.us/) portal
 
 [Accompanying Static Graphs](https://natashamathur.github.io/nypd_activity_visualized/)
 
-Sources referenced:
-* https://speckyboy.com/create-stylish-css-buttons/ */
-* https://bl.ocks.org/emmasaunders/0016ee0a2cab25a643ee9bd4855d3464 */
-* http://bl.ocks.org/mstanaland/6100713 */
-* https://observablehq.com/@d3/stacked-normalized-horizontal-bar
-* https://bl.ocks.org/jdmarlin/ebcc77f97207d1a4792d3bf250ab39d1
-* https://bl.ocks.org/mjfoster83/7c9bdfd714ab2f2e39dd5c09057a55a0
-
