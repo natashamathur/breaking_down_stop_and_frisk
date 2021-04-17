@@ -5,3 +5,5 @@ Data comes from the [`NYC Open Data`](https://opendata.cityofnewyork.us/) portal
 
 [Accompanying Static Graphs](https://natashamathur.github.io/nypd_activity_visualized/)
 
+[Further Analysis and Context](https://drive.google.com/file/d/1bRsn0hsMTFJZtRseQVcUGbQBpCgafH-i/view?usp=sharing)
+
